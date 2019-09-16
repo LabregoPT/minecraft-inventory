@@ -3,7 +3,7 @@ package model;
 import ds.*;
 
 /**
- * This class is meant to represent the inventory used in the game. It'll change its modeled structure depending on the decisions of the user.
+ * This class is meant to represent the inventory used in the game. It'll change its modeled structure depending on the desitions of the user.
  * @author Jhon Edward Mora - Universidad ICESI - A00355710
  * @version 1.0 - 09/2019
  */
@@ -62,12 +62,12 @@ public class Inventory {
 		return type;
 	}
 	
-//	public HashTable<Block> getInventoryHT(){
-//		//TODO Implement data structure.
-//	}
-//
-//	public IQueue<Block> getInventoryQ(){
-//		//TODO Implement data structure.
-//	}
-
+	public HashTable<Block> getInventoryHT(){
+		//TODO Implement data structure.
+	}
+	
+	public IQueue<Block> getInventoryQ(){
+		//TODO Implement data structure.
+	}
+	
 }

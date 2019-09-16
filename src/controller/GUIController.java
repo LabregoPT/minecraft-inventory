@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +12,7 @@ import model.Inventory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 
 public class GUIController {
 
@@ -42,17 +44,17 @@ public class GUIController {
 
     }
 
+
     @FXML
-    void highlightButton(MouseEvent event) throws FileNotFoundException{
-        FileInputStream inputstream = new FileInputStream("imgs/next-bttn-highlight.png");
+    void highlightButton(MouseEvent event) throws FileNotFoundException, MalformedURLException {
+        FileInputStream inputstream = new FileInputStream("imgs/next-bttn.png");
         Image highlightedButton = new Image(inputstream);
         nextHotbarButton.setImage(highlightedButton);
     }
 
-    public void revertButton(MouseEvent mouseEvent) throws FileNotFoundException {
-        FileInputStream inputstream = new FileInputStream("imgs/next-bttn.png");
-        Image highlightedButton = new Image(inputstream);
-        nextHotbarButton.setImage(highlightedButton);
+    private boolean mouseIsInside(Node node, MouseEvent mouseClick) {
+        if (node.getLayoutX() <= mouseClick.getSceneX()) ;
+        return true;
     }
 
     @FXML
@@ -81,7 +83,7 @@ public class GUIController {
 
         FileInputStream backgroundInputstream = new FileInputStream("imgs/background.png");
         Image backgroundImage = new Image(backgroundInputstream);
-        BackgroundSize backgroundSize = new BackgroundSize(100,100,true,true,true,true);
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, true);
         BackgroundImage bImage = new BackgroundImage(backgroundImage, null, null, null, backgroundSize);
         Background background = new Background(bImage);
         pane.setBackground(background);
