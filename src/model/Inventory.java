@@ -1,5 +1,7 @@
 package model;
 
+import ds.*;
+
 /**
  * This class is meant to represent the inventory used in the game. It'll change its modeled structure depending on the desitions of the user.
  * @author Jhon Edward Mora - Universidad ICESI - A00355710
@@ -14,8 +16,15 @@ public class Inventory {
 	/**To be used when the inventory is working in the by hotbars distribution.*/
 	public static int HOTBARS = 1;
 	
+	/**The max number of slots that a normal inventory can have.*/
+	public static int MAX_SLOTS = 36;
+	
 	//Relations
-	//TODO: Add relations with data structures. 
+	/**The inventory represented by a HashTable, may be null depending on situation.*/
+	private HashTable<Block> htInv;
+	
+	/**The inventory represented by a Queue, may be null depending on situation.*/
+	private IQueue<Block> qInv;
 	
 	//Attributes
 	/**The type this inventory is at the moment.*/
@@ -24,10 +33,11 @@ public class Inventory {
 	//Methods
 	
 	/**
-	 * Constructor method. Initializes an instance of this class and specifies the local variables to their default values.
+	 * Constructor method. Initialises an instance of this class and specifies the local variables to their default values.
 	 */
 	public Inventory() {
 		type = CLASSIC;
+		htInv = new HashTable<Block>(MAX_SLOTS);
 	}
 	
 	public void addBlock(Block obj) {
@@ -52,11 +62,11 @@ public class Inventory {
 		return type;
 	}
 	
-	public HashTable<Integer, Block> getInventoryHT(){
+	public HashTable<Block> getInventoryHT(){
 		//TODO Implement data structure.
 	}
 	
-	public Queue<Block> getInventoryQ(){
+	public IQueue<Block> getInventoryQ(){
 		//TODO Implement data structure.
 	}
 	
