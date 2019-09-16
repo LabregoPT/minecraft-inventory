@@ -101,13 +101,12 @@ public class HashTable<T> {
     }
 
     /**
-
-     *@param k This is the key to be deleted in the HashTable
+     * @param k This is the key to be deleted in the HashTable
      */
-    public void delete(int k,T[]B) {
-    	B[k]=null;
-    } 
-    					//HashFunctions
+    public void delete(int k, T[] B) {
+        B[k] = null;
+    }
+    //HashFunctions
 
     /**
      * This method calculates the hash function my the division mehtod
@@ -155,145 +154,5 @@ public class HashTable<T> {
         //h.k; i/ D .h 1 .k/ C ih 2 .k// mod m
         int newPos = (calculateByMultiplcationMethod(k) + i * hashFunc2(k)) % z;
         return newPos;
-
     }
-
-    /**
-     *
-     */
-    public void linearProbing() {
-    }
-
-    public void quadraticProbing() {
-    }
-
-
-    public static void main(String[] args) {
-        int[] x;
-        Integer xz = new Integer(10);
-        HashTable<Integer> ht;
-        ht = new HashTable<Integer>(10);
-        ht.insert(ht.hashMap, 0, xz);
-        System.out.println(ht.search(0, ht.hashMap));
-
-    }
-
 }
-
-
-/**
- * IGNORE THIS
- * public class Hashtbl<K,V> {
- * <p>
- * private Hashnode<K,V>[] nodes;
- *
- * @SuppressWarnings("unchecked") public Hashtbl(int size){
- * nodes = new Hashnode[size];
- * }
- * <p>
- * private int getIndex(K key){
- * int hash = key.hashCode() % nodes.length;
- * if(hash < 0){
- * hash += nodes.length;
- * }
- * return hash;
- * }
- * <p>
- * public V insert(K key, V data){
- * int hash = getIndex(key);
- * <p>
- * // Lets check if same key already exists and if so lets update it with the new value
- * for(Hashnode<K,V> node = nodes[hash]; node != null; node = node.next){
- * if((hash == node.hash) && key.equals(node.key)){
- * V oldData = node.data;
- * node.data = data;
- * return oldData;
- * }
- * }
- * <p>
- * // Lets add the new hash node created below to the start of linked list at nodes[hash] position
- * Hashnode<K,V> node = new Hashnode<K,V>(key, data, nodes[hash], hash);
- * nodes[hash] = node;
- * <p>
- * return null;
- * }
- * <p>
- * /**
- * * It Removes the given key from hash table.
- * * 1. Gets the hash using built in hash code method and by doing % to match to local index
- * * 2. Look for the corresponding index in nodes array, if found then, we got the linked list
- * *         a. Search for the given key, also match the hash
- * *         b. If found, make previous.next = node.next; and return true.
- * * @param key
- * * @return
- * <p>
- * public boolean remove(K key){
- * int hash=getIndex(key);
- * Hashnode<K, V> previous=null;
- * for(Hashnode<K, V> node=nodes[hash];node!=null;node=node.next){
- * if((hash==node.hash)&&key.equals(node.key)){
- * if(previous!=null){
- * previous.next=node.next;
- * }else{
- * nodes[hash]=node.next;
- * }
- * return true;
- * }
- * previous=node;
- * }
- * return false;
- * }
- * <p>
- * public V get(K key){
- * int hash=getIndex(key);
- * <p>
- * for(Hashnode<K, V> node=nodes[hash];node!=null;node=node.next){
- * if(key.equals(node.key))
- * return node.data;
- * }
- * return null;
- * }
- * <p>
- * public void resize(int size){
- * Hashtbl<K, V> newtbl=new Hashtbl<K, V>(size);
- * for(Hashnode<K, V> node:nodes){
- * for(;node!=null;node=node.next){
- * newtbl.insert(node.key,node.data);
- * remove(node.key);
- * }
- * }
- * nodes=newtbl.nodes;
- * }
- * <p>
- * /**
- * * Generic Hash node class, acts like a linked list node
- * * @author IVY3508
- * *
- * * @param <K>
- * * @param <V>
- * <p>
- * <p>
- * <p>
- * public static class Hashnode<K, V> {
- * <p>
- * final K key;
- * <p>
- * V data;
- * <p>
- * Hashnode<K, V> next;
- * <p>
- * final int hash;
- * <p>
- * <p>
- * <p>
- * public Hashnode(K k, V v, Hashnode<K, V> n, int h) {
- * key = k;
- * data = v;
- * next = n;
- * hash = h;
- * }
- * <p>
- * }
- * <p>
- * Most of the code where found in
- */
