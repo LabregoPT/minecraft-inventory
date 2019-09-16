@@ -6,7 +6,7 @@ package ds;
  * @version 1.0 - 09/2019
  * @param <E> Every subclass of object. This generic class is meant to be used with any object created.
  */
-public class Queue<E> implements IQueue<E> {
+public class Queue<E> implements IQueue<E>{
 	
 	/**
 	 * This list will represent the queue as it adds objects
@@ -43,7 +43,7 @@ public class Queue<E> implements IQueue<E> {
 	 * @return The element that has just been dequeued.
 	 * @throws EmptyException when this queue is empty and nothing can't be dequeued of it.
 	 */
-	public E dequeue() throws EmptyException {
+	public E dequeue() throws EmptyException{
 		if(!ll.isEmpty()) {
 			return ll.removeFirst();
 		}else {
@@ -56,7 +56,7 @@ public class Queue<E> implements IQueue<E> {
 	 * @return The first element of the linked list that represents this queue.
 	 * @throws EmptyException when the queue has no elements in it.
 	 */
-	public E front() throws EmptyException {
+	public E front() throws EmptyException{
 		if(ll.getFirst() != null)
 			return ll.getFirst();
 		else
@@ -68,7 +68,7 @@ public class Queue<E> implements IQueue<E> {
 	 * @return The last element of the linked list that represents this queue.
 	 * @throws EmptyException when the queue has no elements in it.
 	 */
-	public E rear() throws EmptyException {
+	public E rear() throws EmptyException{
 		if(ll.getLast() != null)
 			return ll.getLast();
 		else

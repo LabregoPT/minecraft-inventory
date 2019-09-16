@@ -40,11 +40,27 @@ public class Inventory {
 		htInv = new HashTable<Block>(MAX_SLOTS);
 	}
 	
+	/**
+	 * Adds a new block to the inventory.
+	 * @param obj The block to be added to the inventory.
+	 */
 	public void addBlock(Block obj) {
+		
 		if(type == CLASSIC) {
-			//TODO Add type adding logic.
+			if(htInv.isEmpty()) {
+				
+			}
 		}else {
-			//TODO Add type adding logic.			
+			if(qInv.isEmpty()) {
+				
+			}else {
+				try {
+					boolean added = false;
+					
+				}catch(EmptyException e) {
+					e.printStackTrace();
+					}
+			}
 		}
 	}
 	

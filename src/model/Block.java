@@ -1,11 +1,13 @@
 package model;
 
+import ds.Hashable;
+
 /**
  * Class meant to represent each of the usable blocks in the GUI of the game.
  * @author Jhon Edward Mora - Universidad ICESI - A00355710
  * @version 1.0 - 09/2019
  */
-public class Block {
+public class Block implements Hashable {
 	
 	//Constant values
 	/**Max amount of blocks that can form a group.*/
@@ -43,6 +45,11 @@ public class Block {
 	 */
 	public String getURL() {
 		return imgUrl;
+	}
+
+	@Override
+	public int getKey() {
+		return getId();
 	}
 
 }
