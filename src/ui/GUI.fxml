@@ -57,9 +57,14 @@
                   <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="33.75" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <ImageView fx:id="nextHotbarButton" fitHeight="38.0" fitWidth="42.0" layoutX="359.0" layoutY="304.0" onMouseClicked="#nextHotbar" onMouseEntered="#highlightButton" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="nextHotbarButton" fitHeight="38.0" fitWidth="42.0" layoutX="359.0" layoutY="304.0" onMouseClicked="#nextHotbar" onMouseEntered="#highlightNextButton" onMouseExited="#unHighlightNextButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../imgs/next-bttn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="changeInvButton" fitHeight="38.0" fitWidth="42.0" layoutX="219.0" layoutY="141.0" onMouseClicked="#changeInventory" onMouseEntered="#highlightInvButton" onMouseExited="#unhighlightInvButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imgs/change-bttn.png" />
                </image>
             </ImageView>
          </children>
