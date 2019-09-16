@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import model.Inventory;
 
 import java.io.FileInputStream;
@@ -16,6 +16,8 @@ public class GUIController {
 
     Inventory inventory = new Inventory();
 
+    @FXML
+    public BorderPane pane;
 
     @FXML
     public ImageView inventoryImage;
@@ -76,6 +78,13 @@ public class GUIController {
         FileInputStream hotbarInputstream = new FileInputStream("imgs/next-bttn.png");
         Image highlightedButton = new Image(hotbarInputstream);
         nextHotbarButton.setImage(highlightedButton);
+
+        FileInputStream backgroundInputstream = new FileInputStream("imgs/background.png");
+        Image backgroundImage = new Image(backgroundInputstream);
+        BackgroundSize backgroundSize = new BackgroundSize(100,100,true,true,true,true);
+        BackgroundImage bImage = new BackgroundImage(backgroundImage, null, null, null, backgroundSize);
+        Background background = new Background(bImage);
+        pane.setBackground(background);
     }
 
 }
