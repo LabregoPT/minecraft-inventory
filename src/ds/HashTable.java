@@ -74,6 +74,14 @@ public class HashTable<T extends Hashable> {
 	}
 	
 	/**
+	 * Determines whether or not this table is empty.
+	 * @return True if no items have been added to this table, false if not.
+	 */
+	public boolean isEmpty() {
+		return hashSize == 0;
+	}
+	
+	/**
 	 * Determines an index to store an object given its key. This uses the double hashing collision handling and a multiplication and single modulo hashing functions
 	 * @param key The given key.
 	 * @param i Number of times the double hashing function has been done.
@@ -92,6 +100,10 @@ public class HashTable<T extends Hashable> {
 	
 	private int calculateByMultiplication(int key) {
 		return key*hashSize;
+	}
+	
+	public T[] getArr() {
+		return arr;
 	}
 	
 	public String toString() {
