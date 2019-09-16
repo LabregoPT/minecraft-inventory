@@ -2,8 +2,6 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,12 +11,14 @@ import model.Inventory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class GUIController {
 
     Inventory inventory = new Inventory();
+
+
+    @FXML
+    public ImageView inventoryImage;
 
     @FXML
     private GridPane basicInventoryGP;
@@ -40,17 +40,17 @@ public class GUIController {
 
     }
 
-
     @FXML
-    void highlightButton(MouseEvent event) throws FileNotFoundException, MalformedURLException {
-        FileInputStream inputstream = new FileInputStream("imgs/next-bttn.png");
+    void highlightButton(MouseEvent event) throws FileNotFoundException{
+        FileInputStream inputstream = new FileInputStream("imgs/next-bttn-highlight.png");
         Image highlightedButton = new Image(inputstream);
         nextHotbarButton.setImage(highlightedButton);
     }
 
-    private boolean mouseIsInside(Node node, MouseEvent mouseClick) {
-        if (node.getLayoutX() <= mouseClick.getSceneX());
-        return true;
+    public void revertButton(MouseEvent mouseEvent) throws FileNotFoundException {
+        FileInputStream inputstream = new FileInputStream("imgs/next-bttn.png");
+        Image highlightedButton = new Image(inputstream);
+        nextHotbarButton.setImage(highlightedButton);
     }
 
     @FXML
@@ -66,6 +66,16 @@ public class GUIController {
     @FXML
     void nextHotbar(MouseEvent event) {
         //inventory.
+    }
+
+    public void setupInterface(MouseEvent mouseEvent) throws FileNotFoundException {
+        FileInputStream inventoryInputstream = new FileInputStream("imgs/inventory.png");
+        Image inventory = new Image(inventoryInputstream);
+        inventoryImage.setImage(inventory);
+
+        FileInputStream hotbarInputstream = new FileInputStream("imgs/next-bttn.png");
+        Image highlightedButton = new Image(hotbarInputstream);
+        nextHotbarButton.setImage(highlightedButton);
     }
 
 }
