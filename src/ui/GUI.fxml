@@ -16,12 +16,14 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GUIController">
+            onMouseEntered="#setupInterface" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.GUIController">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="340.0" fitWidth="406.0" layoutX="7.0" layoutY="17.0" preserveRatio="true">
+                <ImageView fx:id="inventoryImage" fitHeight="340.0" fitWidth="406.0" layoutX="7.0" layoutY="17.0"
+                           preserveRatio="true">
                     <image>
                         <Image url="@../../imgs/inventory.png"/>
                     </image>

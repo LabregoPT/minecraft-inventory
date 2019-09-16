@@ -62,12 +62,12 @@ public class Inventory {
 		return type;
 	}
 	
-	public HashTable<Block> getInventoryHT(){
-		//TODO Implement data structure.
-	}
-	
-	public IQueue<Block> getInventoryQ(){
-		//TODO Implement data structure.
-	}
+//	public HashTable<Block> getInventoryHT(){
+//		//TODO Implement data structure.
+//	}
+//
+//	public IQueue<Block> getInventoryQ(){
+//		//TODO Implement data structure.
+//	}
 	
 }

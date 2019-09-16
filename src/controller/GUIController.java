@@ -2,20 +2,18 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import model.Inventory;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
 
 public class GUIController {
 
+    public ImageView changeInvButton;
     Inventory inventory = new Inventory();
 
     @FXML
@@ -44,19 +42,6 @@ public class GUIController {
 
     }
 
-
-    @FXML
-    void highlightButton(MouseEvent event) throws FileNotFoundException, MalformedURLException {
-        FileInputStream inputstream = new FileInputStream("imgs/next-bttn.png");
-        Image highlightedButton = new Image(inputstream);
-        nextHotbarButton.setImage(highlightedButton);
-    }
-
-    private boolean mouseIsInside(Node node, MouseEvent mouseClick) {
-        if (node.getLayoutX() <= mouseClick.getSceneX()) ;
-        return true;
-    }
-
     @FXML
     void prevBlockButton(ActionEvent event) {
 
@@ -77,9 +62,13 @@ public class GUIController {
         Image inventory = new Image(inventoryInputstream);
         inventoryImage.setImage(inventory);
 
+        FileInputStream inputstream = new FileInputStream("imgs/change-bttn.png");
+        Image invTypeImage = new Image(inputstream);
+        changeInvButton.setImage(invTypeImage);
+
         FileInputStream hotbarInputstream = new FileInputStream("imgs/next-bttn.png");
-        Image highlightedButton = new Image(hotbarInputstream);
-        nextHotbarButton.setImage(highlightedButton);
+        Image nextBarImage = new Image(hotbarInputstream);
+        nextHotbarButton.setImage(nextBarImage);
 
         FileInputStream backgroundInputstream = new FileInputStream("imgs/background.png");
         Image backgroundImage = new Image(backgroundInputstream);
@@ -89,4 +78,31 @@ public class GUIController {
         pane.setBackground(background);
     }
 
+    public void changeInventory(MouseEvent mouseEvent) {
+
+    }
+
+    public void highlightNextButton(MouseEvent mouseEvent) throws FileNotFoundException {
+        FileInputStream inputstream = new FileInputStream("imgs/next-bttn-highlight.png");
+        Image highlightedButton = new Image(inputstream);
+        nextHotbarButton.setImage(highlightedButton);
+    }
+
+    public void unHighlightNextButton(MouseEvent mouseEvent) throws FileNotFoundException {
+        FileInputStream inputstream = new FileInputStream("imgs/next-bttn.png");
+        Image unhighlightedButton = new Image(inputstream);
+        nextHotbarButton.setImage(unhighlightedButton);
+    }
+
+    public void highlightInvButton(MouseEvent mouseEvent) throws FileNotFoundException {
+        FileInputStream inputstream = new FileInputStream("imgs/change-bttn-highlight.png");
+        Image highlightedButton = new Image(inputstream);
+        changeInvButton.setImage(highlightedButton);
+    }
+
+    public void unhighlightInvButton(MouseEvent mouseEvent) throws FileNotFoundException {
+        FileInputStream inputstream = new FileInputStream("imgs/change-bttn.png");
+        Image highlightedButton = new Image(inputstream);
+        changeInvButton.setImage(highlightedButton);
+    }
 }
