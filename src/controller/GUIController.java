@@ -7,14 +7,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import model.Inventory;
+import model.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class GUIController {
-
+	@FXML
     public ImageView changeInvButton;
-    Inventory inventory = new Inventory();
 
     @FXML
     public BorderPane pane;
@@ -37,19 +36,33 @@ public class GUIController {
     @FXML
     private TextField qttTF;
 
+    Game g = new Game();
+    
+    int currentBlockId = 0;
+    
     @FXML
     void addBlockPressed(ActionEvent event) {
-
+    	g.addBlock(currentBlockId, Integer.parseInt(qttTF.getText()));
     }
 
     @FXML
     void prevBlockButton(ActionEvent event) {
-
+    	if(currentBlockId == 0) {
+    		currentBlockId = Game.USED_BLOCKS-1;
+    	}else {
+    		currentBlockId--;
+    	}
+    	blockDisplay.setImage(new Image(g.getBlockDB().get(currentBlockId).getURL()));
     }
 
     @FXML
     void nextBlockButton(ActionEvent event) {
-
+    	if(currentBlockId == Game.USED_BLOCKS-1) {
+    		currentBlockId = 0;
+    	}else {
+    		currentBlockId++;
+    	}
+    	blockDisplay.setImage(new Image(g.getBlockDB().get(currentBlockId).getURL()));
     }
 
     @FXML

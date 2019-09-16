@@ -13,79 +13,101 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GUIController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="340.0" fitWidth="406.0" layoutX="7.0" layoutY="17.0" preserveRatio="true">
-               <image>
-                  <Image url="@../../imgs/inventory.png" />
-               </image>
-            </ImageView>
-            <GridPane fx:id="basicInventoryGP" layoutX="21.0" layoutY="186.0" prefHeight="110.0" prefWidth="330.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="33.75" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-            <GridPane fx:id="hotBarGP" layoutX="20.0" layoutY="304.0" prefHeight="37.0" prefWidth="332.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="33.75" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <ImageView fx:id="nextHotbarButton" fitHeight="38.0" fitWidth="42.0" layoutX="359.0" layoutY="304.0" onMouseClicked="#nextHotbar" onMouseEntered="#highlightButton" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../imgs/next-bttn.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </center>
-   <left>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="152.0" spacing="8.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Add block" />
-            <ImageView fx:id="blockDisplay" fitHeight="109.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox layoutX="33.0" layoutY="269.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#prevBlockButton" text="&lt;" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#nextBlockButton" text="&gt;" />
-               </children>
-            </HBox>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0">
-               <children>
-                  <TextField fx:id="qttTF" prefHeight="25.0" prefWidth="60.0" promptText="Quantity" />
-                  <Button mnemonicParsing="false" onAction="#addBlockPressed" text="Add" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </left>
-   <padding>
-      <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
-   </padding>
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            onMouseEntered="#setupInterface" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.GUIController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="inventoryImage" fitHeight="340.0" fitWidth="406.0" layoutX="7.0" layoutY="17.0"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../../imgs/inventory.png"/>
+                    </image>
+                </ImageView>
+                <GridPane fx:id="basicInventoryGP" layoutX="21.0" layoutY="186.0" prefHeight="110.0" prefWidth="330.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="33.75" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                </GridPane>
+                <GridPane fx:id="hotBarGP" layoutX="20.0" layoutY="304.0" prefHeight="37.0" prefWidth="332.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="33.75" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                </GridPane>
+                <ImageView fx:id="nextHotbarButton" fitHeight="38.0" fitWidth="42.0" layoutX="359.0" layoutY="304.0"
+                           onMouseClicked="#nextHotbar" onMouseEntered="#highlightNextButton"
+                           onMouseExited="#unHighlightNextButton" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imgs/next-bttn.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="changeInvButton" fitHeight="38.0" fitWidth="42.0" layoutX="219.0" layoutY="141.0"
+                           onMouseClicked="#changeInventory" onMouseEntered="#highlightInvButton"
+                           onMouseExited="#unhighlightInvButton" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imgs/change-bttn.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </center>
+    <left>
+        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="152.0" spacing="8.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Add block" textFill="#fc9d3f">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+                <ImageView fx:id="blockDisplay" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true"
+                           preserveRatio="true"/>
+                <HBox layoutX="33.0" layoutY="269.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                      minWidth="-Infinity" spacing="8.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#prevBlockButton" text="&lt;"/>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#nextBlockButton"
+                                text="&gt;"/>
+                    </children>
+                </HBox>
+                <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                      spacing="8.0">
+                    <children>
+                        <TextField fx:id="qttTF" prefHeight="25.0" prefWidth="60.0" promptText="Quantity"/>
+                        <Button mnemonicParsing="false" onAction="#addBlockPressed" text="Add"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+    <padding>
+        <Insets bottom="14.0" left="14.0" right="14.0" top="14.0"/>
+    </padding>
 </BorderPane>

@@ -20,6 +20,7 @@ public class Inventory {
 	public static int MAX_SLOTS = 36;
 	
 	//Relations
+
 	/**The inventory represented by a HashTable, may be null depending on situation.*/
 	private HashTable<Block> htInv;
 	
@@ -40,34 +41,71 @@ public class Inventory {
 		htInv = new HashTable<Block>(MAX_SLOTS);
 	}
 	
+	
+	/**
+	 * Adds a new block to the inventory.
+	 * @param obj The block to be added to the inventory.
+	 */
 	public void addBlock(Block obj) {
 		if(type == CLASSIC) {
-			//TODO Add type adding logic.
+			if(htInv.isEmpty()) {
+				htInv.add(obj);
+			}else {
+				Block s = htInv.search(obj.getKey());
+				s.addQuantity(obj.getQuantity());
+			}
 		}else {
-			//TODO Add type adding logic.			
+			addQInv(obj);
 		}
 	}
 	
-	public void changeType() {
+	public void addQInv(Block obj) {
+		if(qInv.isEmpty()) {
+			qInv.enqueue(obj);
+		}else {
+			try {
+				while(qInv.front().getId() != obj.getId()) {
+					Block e = qInv.dequeue();
+					qInv.enqueue(e);
+				}
+			}catch(EmptyException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+	
+	public void changeType() throws EmptyException {
 		if(type == CLASSIC) {
 			type = HOTBARS;
-			//TODO add type changing logic.
+			qInv = new Queue<Block>();
+			for(Block b : htInv.getArr()) {
+				addQInv(b);
+			}
+			htInv = null;
 		}else {
 			type = CLASSIC;
-			//TODO add type changing logic.
+			htInv = new HashTable<Block>(MAX_SLOTS);
+			while(!qInv.isEmpty()) {
+				htInv.add(qInv.dequeue());
+			}
 		}
+	}
+	
+	public void nextHotBar() throws EmptyException{
+		Block b = qInv.dequeue();
+		qInv.enqueue(b);
 	}
 	
 	public int getInventoryType() {
 		return type;
 	}
 	
-//	public HashTable<Block> getInventoryHT(){
-//		//TODO Implement data structure.
-//	}
-//
-//	public IQueue<Block> getInventoryQ(){
-//		//TODO Implement data structure.
-//	}
+	public HashTable<Block> getInventoryHT(){
+		return htInv;
+	}
+
+	public IQueue<Block> getInventoryQ(){
+		return qInv;
+	}
 	
 }
